@@ -12,7 +12,7 @@ int main()
     char buffer[BUFF_SIZE];
     char value[50];
     Node nodeList[20];
-    fp = fopen("basic.ntwk", "r");
+    fp = fopen("basic.ntwk", "rb");
 
     if ((fp == NULL))
     {
@@ -35,10 +35,10 @@ int main()
         if (s != NULL)
         {
             sscanf(buffer, "%d, %d", &nodeList[i].nodeID, &nodeList[i].conCount);
-            printf("Found nodeId: %d and Connection Count of: %d\n", nodeList[i].nodeID, nodeList[i].conCount);
+            printf("Found nodeId: %d\nFound Connection Count of: %d\n", nodeList[i].nodeID, nodeList[i].conCount);
             nodeList->conList = (int *)malloc(sizeof(int) * nodeList[i].conCount);
             int j = 0;
-            for(j; j < nodeList[i].conCount; j++)
+            for (j; j < nodeList[i].conCount; j++)
             {
                 fgets(buffer, BUFF_SIZE, fp);
                 sscanf(buffer, "%d", &nodeList->conList[j]);
@@ -47,9 +47,9 @@ int main()
             continue;
         }
 
-        sscanf(buffer, "%d, %d", &nodeList[i].nodeID, &nodeList[i].conCount);
+        // sscanf(buffer, "%d, %d", &nodeList[i].nodeID, &nodeList[i].conCount);
+
         sscanf(buffer, "%s", value);
-      
 
         if (strcmp(value, "endNode") == 0)
         {
