@@ -12,8 +12,8 @@ int main()
     char buffer[BUFF_SIZE];
     char value[50];
     Node nodeList[20];
-    fp = fopen("basic.ntwk", "rb");
-
+    fp = fopen("basic.ntwk", "r");
+    //
     if ((fp == NULL))
     {
         perror("Error opening file");
