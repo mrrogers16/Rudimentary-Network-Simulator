@@ -4,7 +4,7 @@
 #include "node.h"
 #define BUFF_SIZE 1024
 #define COMMENT_MARKER '#'
-int main()
+int main(int argc, char *argv[])
 {
 
     int i = 0;
