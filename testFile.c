@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include "node.h"
 #define BUFF_SIZE 1024
 #define COMMENT_MARKER '#'
@@ -36,7 +37,7 @@ int main(int argc, char *argv[])
             size_t len = strlen(comment);
             memset(comment, '\0', len);
         }
-
+        
         // memory address at s is set when ',' is found
         char *s = strchr(buffer, ',');
         if (s != NULL)

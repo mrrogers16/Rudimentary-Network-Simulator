@@ -1,15 +1,14 @@
 # this line is a full comment that might be pseudo-code or whatever
-4, 2 # 4, 3
+4, 5 # 4, 3
 1
-# 9
-7
-endNode
-2, 5
-# 1
-5
-1
-7
-9
+2
 3
+# 9
+4
+5
+endNode
+1, 2
+4
+6
 endNode
 endNet
