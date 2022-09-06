@@ -1,7 +1,3 @@
-
-#define BUFF_SIZE 1024
-#define COMMENT_MARKER '#'
-
 int checkString(char buffer[BUFF_SIZE], int size)
 {
     int buffLen = (int)strlen(buffer) - size;

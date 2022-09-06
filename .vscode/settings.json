@@ -1,0 +1,9 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "f:\\nodenet",
+            "binaryPath": "f:\\nodenet\\node.o",
+            "binaryArgs": []
+        }
+    ]
+}

@@ -5,6 +5,8 @@
 #define BUFF_SIZE 1024
 #define COMMENT_MARKER '#'
 
+void trim(char *s);
+
 int main(int argc, char *argv[])
 {
 
@@ -37,6 +39,7 @@ int main(int argc, char *argv[])
             size_t len = strlen(comment);
             memset(comment, '\0', len);
         }
+
 
         // memory address at s is set when ',' is found
         char *s = strchr(buffer, ',');
@@ -85,4 +88,17 @@ int main(int argc, char *argv[])
     free(nodeList->conList);
     fclose(fp);
     return 0;
+}
+
+void trim(char *s)
+{
+    int i = (strlen(s) - 1);
+    while (i > 0)
+    {
+        if (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
+            i--;
+        else
+            break;
+    }
+    s[i + 1] = '\0';
 }
