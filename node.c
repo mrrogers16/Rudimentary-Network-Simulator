@@ -46,10 +46,9 @@ int main(int argc, char *argv[])
             printf("Found nodeId: %d\nFound Connection Count of: %d\n", nodeList[i].nodeID, nodeList[i].conCount);
             // dynamically allocate memory for conList
             nodeList->conList = (int *)malloc(sizeof(int) * nodeList[i].conCount);
-            // Look through buffer conCount amount of times and assign
 
-            int x = 0;
-            int j = 0;
+            // Look through buffer conCount amount of times and assign
+            int x, j = 0;
             for (x = 0; x < nodeList->conCount; x++)
             {
                 for (j; j < nodeList[i].conCount; j++)
