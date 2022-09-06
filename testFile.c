@@ -5,8 +5,6 @@
 #define BUFF_SIZE 1024
 #define COMMENT_MARKER '#'
 
-void trim(char *s);
-
 int main(int argc, char *argv[])
 {
 
@@ -15,14 +13,13 @@ int main(int argc, char *argv[])
     char buffer[BUFF_SIZE];
     char value[50];
     Node nodeList[20];
-
     fp = fopen("basic.ntwk", "r");
 
     // Check file opened correctly
     if ((fp == NULL))
     {
         perror("Error opening file");
-        return 1;
+        exit(1);
     }
 
     while (!feof(fp))
@@ -40,18 +37,17 @@ int main(int argc, char *argv[])
             memset(comment, '\0', len);
         }
 
-
         // memory address at s is set when ',' is found
         char *s = strchr(buffer, ',');
         if (s != NULL)
         {
             // Scan the buffer to look for comma and if found assign NodeID and connection count to memory addressd of nodeList[i]
             sscanf(buffer, "%d, %d", &nodeList[i].nodeID, &nodeList[i].conCount);
-            printf("Found nodeID: %d\nFound Connection Count of: %d\n", nodeList[i].nodeID, nodeList[i].conCount);
+            printf("Found nodeId: %d\nFound Connection Count of: %d\n", nodeList[i].nodeID, nodeList[i].conCount);
             // dynamically allocate memory for conList
             nodeList->conList = (int *)malloc(sizeof(int) * nodeList[i].conCount);
+            // Look through buffer conCount amount of times and assign
 
-            // Look through buffer conCount amount of times and assign connection nodes
             int x = 0;
             int j = 0;
             for (x = 0; x < nodeList->conCount; x++)
@@ -88,17 +84,4 @@ int main(int argc, char *argv[])
     free(nodeList->conList);
     fclose(fp);
     return 0;
-}
-
-void trim(char *s)
-{
-    int i = (strlen(s) - 1);
-    while (i > 0)
-    {
-        if (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
-            i--;
-        else
-            break;
-    }
-    s[i + 1] = '\0';
 }
