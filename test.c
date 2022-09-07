@@ -15,6 +15,7 @@ int main(int argc, char *argv[])
     char buffer[BUFF_SIZE];
     char value[50];
     Node nodeList[20];
+
     fp = fopen("basic.ntwk", "r");
 
     // Check file opened correctly
@@ -38,7 +39,6 @@ int main(int argc, char *argv[])
             size_t len = strlen(comment);
             memset(comment, '\0', len);
         }
-
         // memory address at s is set when ',' is found
         char *s = strchr(buffer, ',');
         if (s != NULL)
@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
             // dynamically allocate memory for conList
             nodeList->conList = (int *)malloc(sizeof(int) * nodeList[i].conCount);
 
-            // Look through buffer conCount amount of times and assign connection count
+            // Look through buffer conCount amount of times and assign
             int x, j = 0;
             for (x = 0; x < nodeList->conCount; x++)
             {
@@ -63,8 +63,6 @@ int main(int argc, char *argv[])
             }
             continue;
         }
-
-        // sscanf(buffer, "%d, %d", &nodeList[i].nodeID, &nodeList[i].conCount);
 
         sscanf(buffer, "%s", value);
 

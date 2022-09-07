@@ -28,8 +28,8 @@ int main(int argc, char *argv[])
     {
         fgets(buffer, BUFF_SIZE, fp);
 
-        // checkString(buffer, BUFF_SIZE);
         // Handle oversized buffer
+        checkString(buffer, BUFF_SIZE);
 
         char *comment = strchr(buffer, COMMENT_MARKER);
 
