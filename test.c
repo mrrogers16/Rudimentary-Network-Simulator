@@ -28,8 +28,8 @@ int main(int argc, char *argv[])
     {
         fgets(buffer, BUFF_SIZE, fp);
 
-        // checkString(buffer, BUFF_SIZE);
         // Handle oversized buffer
+        checkString(buffer, BUFF_SIZE);
 
         char *comment = strchr(buffer, COMMENT_MARKER);
 
@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
             // dynamically allocate memory for conList
             nodeList->conList = (int *)malloc(sizeof(int) * nodeList[i].conCount);
 
-            // Look through buffer conCount amount of times and assign
+            // Look through buffer conCount amount of times and assign connection count
             int x, j = 0;
             for (x = 0; x < nodeList->conCount; x++)
             {
