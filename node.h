@@ -1,6 +1,9 @@
 #ifndef _node_h
 #define _node_h
 #include "utilities.c"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 typedef struct Node
 {
