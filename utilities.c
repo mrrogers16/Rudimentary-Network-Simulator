@@ -1,3 +1,7 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
 int checkEndNet(char value[])
 {
     if (strcmp(value, "endNet") == 0)
