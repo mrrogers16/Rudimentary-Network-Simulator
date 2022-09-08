@@ -9,4 +9,21 @@ typedef struct Node
     int *conList;
 }Node;
 
+// typedef struct Input
+// {
+//     char cmdarg = 'x';
+
+//     switch(cmdarg)
+//     {
+//     case '-h':
+//         printf("This is the help");
+//         break;
+    
+//     default:
+//         break;
+//     }
+
+// }input;
+
+
 #endif
