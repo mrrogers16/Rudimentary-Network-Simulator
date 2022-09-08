@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -55,9 +56,10 @@ int main(int argc, char *argv[])
             {
                 for (j; j < nodeList[i].conCount; j++)
                 {
+                    
 
                     fgets(buffer, BUFF_SIZE, fp);
-                    if (buffer[0] == COMMENT_MARKER)
+                    if(buffer[0] ==  COMMENT_MARKER)
                     {
                         j -= 1;
                         continue;
