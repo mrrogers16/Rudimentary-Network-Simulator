@@ -1,13 +1,18 @@
 #ifndef _node_h
 #define _node_h
-
+#include "utilities.c"
 
 typedef struct Node
 {
     int nodeID;
     int conCount;
     int *conList;
-}Node;
+} Node;
+
+int checkString(char buffer[], int size);
+int checkEndNode(char value[]);
+int checkEndNet(char value[]);
+void stripComment(char buffer[]);
 
 // typedef struct Input
 // {
@@ -18,12 +23,11 @@ typedef struct Node
 //     case '-h':
 //         printf("This is the help");
 //         break;
-    
+
 //     default:
 //         break;
 //     }
 
 // }input;
-
 
 #endif

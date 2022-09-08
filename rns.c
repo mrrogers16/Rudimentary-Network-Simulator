@@ -1,12 +1,9 @@
-
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include "node.h"
 #define BUFF_SIZE 1024
 #define COMMENT_MARKER '#'
-
-// int checkString(char buffer[BUFF_SIZE], int size);
 
 int main(int argc, char *argv[])
 {
@@ -32,13 +29,8 @@ int main(int argc, char *argv[])
         // Handle oversized buffer
         checkString(buffer, BUFF_SIZE);
 
-        char *comment = strchr(buffer, COMMENT_MARKER);
-
-        if (comment != NULL)
-        {
-            size_t len = strlen(comment);
-            memset(comment, '\0', len);
-        }
+        // Remove comments
+        stripComment(buffer);
 
         // memory address at s is set when ',' is found
         char *s = strchr(buffer, ',');
@@ -71,33 +63,15 @@ int main(int argc, char *argv[])
             continue;
         }
 
-        // sscanf(buffer, "%d, %d", &nodeList[i].nodeID, &nodeList[i].conCount);
-
         sscanf(buffer, "%s", value);
-
-        // Check if value == endNode
-        if (strcmp(value, "endNode") == 0)
+        if (checkEndNode(value) == 0)
         {
-            printf("Found endnode\n");
             i++;
             continue;
         }
-        // Check if value == endNet
-        if (strcmp(value, "endNet") == 0)
-        {
-            printf("Found endNet\n");
-            return 0;
-        }
+        checkEndNet(value);
     }
     free(nodeList->conList);
     fclose(fp);
     return 0;
-}
-
-int checkString(char buffer[BUFF_SIZE], int size)
-{
-    int buffLen = (int)strlen(buffer) - size;
-    (buffLen <= 0) ? buffer = 0 : printf("Your input is %d over the maximum size of %d\n", buffLen, size);
-
-    return buffLen;
 }
