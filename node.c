@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
         fgets(buffer, BUFF_SIZE, fp);
 
         // Handle oversized buffer
-        // checkString(buffer, BUFF_SIZE);
+        checkString(buffer, BUFF_SIZE);
 
         char *comment = strchr(buffer, COMMENT_MARKER);
 
@@ -56,10 +56,9 @@ int main(int argc, char *argv[])
             {
                 for (j; j < nodeList[i].conCount; j++)
                 {
-                    
 
                     fgets(buffer, BUFF_SIZE, fp);
-                    if(buffer[0] ==  COMMENT_MARKER)
+                    if (buffer[0] == COMMENT_MARKER)
                     {
                         j -= 1;
                         continue;
@@ -95,10 +94,10 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-// int checkString(char buffer[BUFF_SIZE], int size)
-// {
-//     int buffLen = (int)strlen(buffer) - size;
-//     (buffLen <= 0) ? buffer = 0 : printf("Your input is %d over the maximum size of %d\n", buffLen, size);
+int checkString(char buffer[BUFF_SIZE], int size)
+{
+    int buffLen = (int)strlen(buffer) - size;
+    (buffLen <= 0) ? buffer = 0 : printf("Your input is %d over the maximum size of %d\n", buffLen, size);
 
-//     return buffLen;
-// }
+    return buffLen;
+}
