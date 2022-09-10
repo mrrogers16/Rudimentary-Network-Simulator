@@ -1,24 +1,10 @@
+#ifndef _UTILITIES_H
+#define _UTILITIES_H
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 
-int checkEndNet(char value[])
-{
-    if (strcmp(value, "endNet") == 0)
-    {
-        printf("Found endNet\n");
-        return 0;
-    }
-}
 
-int checkEndNode(char value[])
-{
-    if (strcmp(value, "endNode") == 0)
-    {
-        printf("Found endnode\n");
-        return 0;
-    }
-}
 
 void stripComment(char buffer[])
 {
@@ -35,7 +21,15 @@ void stripComment(char buffer[])
 int checkString(char buffer[], int size)
 {
     int buffLen = (int)strlen(buffer) - size;
-    (buffLen <= 0) ? buffer = 0 : printf("Your input is %d over the maximum size of %d\n", buffLen, size);
 
+    if (buffLen <= 0)
+    {
+        buffer = 0;
+    }
+    else
+    {
+        printf("Your input is %d over the maximum size of %d\n", buffLen, size);
+    }
     return buffLen;
 }
+#endif
