@@ -4,8 +4,12 @@
 #include <string.h>
 #include <stdlib.h>
 
+void stripComment(char buffer[]);
+int checkString(char buffer[], int size);
+void parseCMDLine(int argc, char argv[]);
+void printHelp();
 
-
+// Remove comments denoted by '#'
 void stripComment(char buffer[])
 {
     char COMMENT_MARKER = '#';
@@ -17,7 +21,7 @@ void stripComment(char buffer[])
         memset(comment, '\0', len);
     }
 }
-
+// Check buffer size
 int checkString(char buffer[], int size)
 {
     int buffLen = (int)strlen(buffer) - size;
@@ -32,4 +36,32 @@ int checkString(char buffer[], int size)
     }
     return buffLen;
 }
+
+// Ensure correct amount of command line arguments are passed
+void parseCMDLine(int argc, char argv[])
+{
+    if (argc == 1)
+    {
+        printf("Too few arguments\n");
+        printHelp();
+        exit(1);
+    }
+    else if (argc == 3)
+    {
+        return;
+    }
+    else if (argc > 3)
+    {
+        printf("Error: too many arguments.\n");
+        printHelp();
+        exit(1);
+    }
+}
+
+void printHelp()
+{
+    printf("Usage: rns.exe [-h help] [-n file input]\n");
+    printf("Example: rns.exe -n basic.ntwk");
+}
+
 #endif

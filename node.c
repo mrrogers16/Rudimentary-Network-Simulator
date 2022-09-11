@@ -10,7 +10,7 @@ void buildNode(Node *nodeList, char buffer[], FILE *fp)
     int i = 0;
     while (!feof(fp))
     {
-
+        // Read in file line by line
         fgets(buffer, BUFF_SIZE, fp);
 
         // Handle oversized buffer
@@ -25,7 +25,7 @@ void buildNode(Node *nodeList, char buffer[], FILE *fp)
         {
             // Scan the buffer to look for comma and if found assign NodeID and connection count to memory addressd of nodeList[i]
             sscanf(buffer, "%d, %d", &nodeList[i].nodeID, &nodeList[i].conCount);
-            printf("Found nodeId: %d\nFound Connection Count of: %d\n", nodeList[i].nodeID, nodeList[i].conCount);
+            printf("Found nodeId: %d\nConnection Count: %d\n", nodeList[i].nodeID, nodeList[i].conCount);
             // dynamically allocate memory for conList
             nodeList->conList = (int *)malloc(sizeof(int) * nodeList[i].conCount);
 
@@ -52,13 +52,14 @@ void buildNode(Node *nodeList, char buffer[], FILE *fp)
         if (strcmp(value, "endNode") == 0)
         {
             printf("Found endnode\n");
+            printf("---------------\n");
             continue;
         }
 
         if (strcmp(value, "endNet") == 0)
         {
             printf("Found endNet\n");
-            return;
+            exit(0);
         }
     }
 }
