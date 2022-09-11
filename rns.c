@@ -5,14 +5,12 @@
 #define BUFF_SIZE 1024
 #define COMMENT_MARKER '#'
 
-
 int main(int argc, char *argv[])
 {
 
     int i = 0;
     FILE *fp = NULL;
     char buffer[BUFF_SIZE];
-    char value[50];
     Node nodeList[20];
     fp = fopen("basic.ntwk", "r");
 
@@ -22,13 +20,9 @@ int main(int argc, char *argv[])
         perror("Error opening file");
         exit(1);
     }
-    for(i; i < 20; i++)
-    {
-    buildNode(nodeList, buffer, fp);
-    printf("%s", nodeList);
-    }
 
-    
+    buildNode(nodeList, buffer, fp);
+
     free(nodeList->conList);
     fclose(fp);
     return 0;

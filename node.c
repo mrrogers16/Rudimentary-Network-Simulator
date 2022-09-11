@@ -3,24 +3,6 @@
 #define COMMENT_MARKER '#'
 #define BUFF_SIZE 1024
 
-int checkEndNet(char value[])
-{
-    if (strcmp(value, "endNet") == 0)
-    {
-        printf("Found endNet\n");
-        return 0;
-    }
-}
-
-int checkEndNode(char value[])
-{
-    if (strcmp(value, "endNode") == 0)
-    {
-        printf("Found endnode\n");
-        return 0;
-    }
-}
-
 void buildNode(Node *nodeList, char buffer[], FILE *fp)
 {
 
@@ -65,15 +47,18 @@ void buildNode(Node *nodeList, char buffer[], FILE *fp)
                     x++;
                 }
             }
+        }
+        sscanf(buffer, "%s", value);
+        if (strcmp(value, "endNode") == 0)
+        {
+            printf("Found endnode\n");
             continue;
+        }
 
-            sscanf(buffer, "%s", value);
-            if (checkEndNode(value) == 0)
-            {
-                i++;
-                continue;
-            }
-            checkEndNet(value);
+        if (strcmp(value, "endNet") == 0)
+        {
+            printf("Found endNet\n");
+            return;
         }
     }
 }
