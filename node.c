@@ -51,14 +51,14 @@ void buildNode(Node *nodeList, char buffer[], FILE *fp)
         sscanf(buffer, "%s", value);
         if (strcmp(value, "endNode") == 0)
         {
-            printf("Found endnode\n");
+            //printf("Found endnode\n");
             printf("---------------\n");
             continue;
         }
 
         if (strcmp(value, "endNet") == 0)
         {
-            printf("Found endNet\n");
+            //printf("Found endNet\n");
             exit(0);
         }
     }

@@ -61,7 +61,7 @@ void parseCMDLine(int argc, char argv[])
 void printHelp()
 {
     printf("Usage: rns.exe [-h help] [-n file input]\n");
-    printf("Example: rns.exe -n basic.ntwk");
+    printf("Example: rns.exe -n basic.ntwk\n");
 }
 
 #endif

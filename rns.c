@@ -35,11 +35,15 @@ int main(int argc, char *argv[])
         case 'h':
             printHelp();
             return 0;
+            
         case '?':
             fprintf(stderr, "Unrecognized option -%c\n", optopt);
             return 0;
+            
         default:
             printHelp();
+            return 0;
+            
         }
     }
 
