@@ -63,3 +63,7 @@ void buildNode(Node *nodeList, char buffer[], FILE *fp)
         }
     }
 }
+// //TODO void destroyNode()
+// {
+// free()conlistmemory
+// }

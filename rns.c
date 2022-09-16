@@ -33,12 +33,16 @@ int main(int argc, char *argv[])
             break;
         case 'h':
             printHelp();
-            break;
+            return 0;
+            
         case '?':
             fprintf(stderr, "Unrecognized option -%c\n", optopt);
-            break;
+            return 0;
+            
         default:
             printHelp();
+            return 0;
+            
         }
     }
 
