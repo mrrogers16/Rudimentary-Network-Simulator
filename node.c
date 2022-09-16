@@ -23,7 +23,7 @@ void buildNode(Node *nodeList, char buffer[], FILE *fp)
         char *s = strchr(buffer, ',');
         if (s != NULL)
         {
-            // Scan the buffer to look for comma and if found assign NodeID and connection count to memory addressd of nodeList[i]
+            // Scan the buffer to look for comma and if found assign NodeID and connection count to memory address of nodeList[i]
             sscanf(buffer, "%d, %d", &nodeList[i].nodeID, &nodeList[i].conCount);
             printf("Found nodeId: %d\nConnection Count: %d\n", nodeList[i].nodeID, nodeList[i].conCount);
             // dynamically allocate memory for conList
@@ -51,14 +51,14 @@ void buildNode(Node *nodeList, char buffer[], FILE *fp)
         sscanf(buffer, "%s", value);
         if (strcmp(value, "endNode") == 0)
         {
-            printf("Found endnode\n");
+            //printf("Found endnode\n");
             printf("---------------\n");
             continue;
         }
 
         if (strcmp(value, "endNet") == 0)
         {
-            printf("Found endNet\n");
+            //printf("Found endNet\n");
             exit(0);
         }
     }

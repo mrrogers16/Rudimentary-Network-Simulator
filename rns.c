@@ -2,7 +2,6 @@
 #include <string.h>
 #include <stdlib.h>
 #include <getopt.h>
-#include <unistd.h>
 #include "node.h"
 #define BUFF_SIZE 1024
 

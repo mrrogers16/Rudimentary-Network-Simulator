@@ -12,7 +12,7 @@ void printHelp();
 // Remove comments denoted by '#'
 void stripComment(char buffer[])
 {
-    char COMMENT_MARKER = '#';
+    char COMMENT_MARKER = '#'; //
     char *comment = strchr(buffer, COMMENT_MARKER);
 
     if (comment != NULL)
