@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 
     parseCMDLine(argc, argv);
 
-    while ((opt = getopt(argc, argv, ":hs:n:")) != -1)
+    while ((opt = getopt(argc, argv, ":h:n:s:")) != -1)
     {
         switch (opt)
         {
