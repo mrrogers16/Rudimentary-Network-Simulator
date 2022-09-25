@@ -47,11 +47,11 @@ void parseCMDLine(int argc, char argv[])
         printHelp();
         exit(1);
     }
-    else if (argc == 3 || argc == 4)
+    else if (argc == 3 || argc == 5)
     {
         return;
     }
-    else if (argc > 4)
+    else if (argc > 5)
     {
         printf("Error: too many arguments.\n");
         printHelp();
