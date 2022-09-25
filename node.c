@@ -75,6 +75,7 @@ void build_sim(Log *simList, char buffer[], FILE *sim)
         int field_count = 0;
         // Read in file line by line
         fgets(buffer, BUFF_SIZE, sim);
+        printf("%s", buffer);
         // Handle oversized buffer
         checkString(buffer, BUFF_SIZE);
         // Remove comments
@@ -83,10 +84,6 @@ void build_sim(Log *simList, char buffer[], FILE *sim)
         {
             perror("Error opening sim file");
             exit(1);
-        }
-        while (fgets(buffer, BUFF_SIZE, sim))
-        {
-            printf("%s\n", buffer);
         }
     }
 }

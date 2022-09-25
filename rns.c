@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     Node nodeList[20];
     Log csvList[100];
     fp = fopen(argv[2], "r");
-    sim = fopen(argv[4], "r");
+    sim = fopen(argv[5], "r");
     int opt;
 
     parseCMDLine(argc, argv);
