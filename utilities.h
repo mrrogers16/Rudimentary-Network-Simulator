@@ -8,7 +8,7 @@ void stripComment(char buffer[]);
 int checkString(char buffer[], int size);
 void parseCMDLine(int argc, char argv[]);
 void printBuffer(char buffer[]);
-void printLog(Log *csvList)
+void printLog(char *csvList);
 void printHelp();
 
 // Remove comments denoted by '#'
@@ -38,7 +38,6 @@ int checkString(char buffer[], int size)
     }
     return buffLen;
 }
-
 // Ensure correct amount of command line arguments are passed
 void parseCMDLine(int argc, char argv[])
 {
@@ -75,9 +74,9 @@ void printBuffer(char buffer[])
         printf("%s", buffer[i]);
     }
 }
-void printLog(Log *csvList)
+void printLog(char *csvList)
 {
-    printf("%u\n%s\n%u\n%u\n%u", csvList[i]->start_time, csvList[i]->msg, csvList[i]->current_node, csvList[i]->end_node);
+   // printf("%u\n%s\n%u\n%u\n%u", csvList[i]->start_time, csvList[i]->msg, csvList[i]->current_node, csvList[i]->end_node);
 }
 
 #endif

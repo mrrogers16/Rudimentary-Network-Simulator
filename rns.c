@@ -9,12 +9,12 @@ int main(int argc, char *argv[])
 {
 
     FILE *fp = NULL;
-    FILE *csv = NULL;
+    FILE *sim = NULL;
     char buffer[BUFF_SIZE];
     Node nodeList[20];
     Log csvList[100];
     fp = fopen(argv[2], "r");
-    csv = fopen(argv[4], "r");
+    sim = fopen(argv[4], "r");
     int opt;
 
     parseCMDLine(argc, argv);
@@ -43,8 +43,7 @@ int main(int argc, char *argv[])
             }
             else
             {
-                build_csv(csvList, buffer, csv);
-                printLog(csvList);
+                build_csv(csvList, buffer, sim);
             }
             break;
         case 'h':
@@ -62,7 +61,7 @@ int main(int argc, char *argv[])
     }
 
     free(nodeList->conList);
-    fclose(csv);
+    fclose(sim);
     fclose(fp);
     return 0;
 }

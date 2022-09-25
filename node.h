@@ -18,19 +18,17 @@ typedef struct csvLog
     unsigned int msg_id;
     unsigned int start_node;
     unsigned int end_node;
-    unsigned int current_node;
-    unsigned int time_end;
-    
 } Log;
 
-// typedef struct repLog
-// {
-//     unsigned int timestamp;
-//     char *report;
-//     unsigned int 
-// }
+typedef struct csvRep
+{
+    unsigned int start_time;
+    char *rep;
+    unsigned int node_ID;
+} Rep;
 
-void build_csv(csvLog *csvList, char buffer[], FILE *csvp);
+
+void build_csv(Log *csvList, char buffer[], FILE *csvp);
 void buildNode(Node *nodeList, char buffer[], FILE *fp);
 
 #endif

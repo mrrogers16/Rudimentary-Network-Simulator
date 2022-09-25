@@ -2,6 +2,7 @@
 #include "node.h"
 #define COMMENT_MARKER '#'
 #define BUFF_SIZE 1024
+#define DELIMITER ','
 
 void buildNode(Node *nodeList, char buffer[], FILE *fp)
 {
@@ -64,54 +65,29 @@ void buildNode(Node *nodeList, char buffer[], FILE *fp)
     }
 }
 
-void build_csv(Log *csvList, char buffer[], FILE *csvp)
+void build_sim(Log *simList, char buffer[], FILE *sim)
 {
     char value[50];
     int i = 0;
-    unsigned int ts = 0;
-    int read = 0;
-    int records = 0;
-
-    while (!feof(csvp))
+    while (!feof(sim))
     {
-        fgets(buffer, BUFF_SIZE, csvp);
+        int row_count = 0;
+        int field_count = 0;
+        // Read in file line by line
+        fgets(buffer, BUFF_SIZE, sim);
+        // Handle oversized buffer
         checkString(buffer, BUFF_SIZE);
+        // Remove comments
         stripComment(buffer);
-        int columns = check_columns(buffer);
-        size_t len = strlen(buffer);
-        for (i = 0; i < len; i++)
+        if (sim == NULL)
         {
-            if(columns == NULL)
-            {
-                printf("Buffer is empty or Columns function failed");
-            }
-            if (columns == 4)
-            {
-                read = fscanf(buffer, "%u,%s,%u,%u,%u", &csvList[i].start_time, &csvList[i].msg, &csvList[i].current_node, &csvList[i].end_node);
-                records++;
-            }
-            else if(columns == 2)
-            {
-                fscanf(buffer, "%u,%s,%u", &csvList[i].start_time, &csvList[i].msg, &csvList[i].current_node);
-                records++;
-            }
-            else if (columns == 1 && strchr(buffer, 'rep'))
-            {
-                fscanf(buffer, "%u,%s", csvList[i].start_time, csvList[i].msg);
-                records++;
-            }
-            else if (columns == 1 && strchr(buffer, 'endSim'))
-            {
-                fscanf(buffer, "%u,%s", csvList[i].start_time, csvList[i].msg);
-                exit(0);
-            }
+            perror("Error opening sim file");
+            exit(1);
         }
-    }
-
-    sscanf(buffer, "%u,%s", &ts, &value);
-    if (strcmp(value, "endSim") == 0)
-    {
-        exit(0);
+        while (fgets(buffer, BUFF_SIZE, sim))
+        {
+            printf("%s\n", buffer);
+        }
     }
 }
 
