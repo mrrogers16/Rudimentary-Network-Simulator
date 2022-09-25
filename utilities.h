@@ -7,6 +7,8 @@
 void stripComment(char buffer[]);
 int checkString(char buffer[], int size);
 void parseCMDLine(int argc, char argv[]);
+void printBuffer(char buffer[]);
+void printLog(Log *csvList)
 void printHelp();
 
 // Remove comments denoted by '#'
@@ -46,11 +48,11 @@ void parseCMDLine(int argc, char argv[])
         printHelp();
         exit(1);
     }
-    else if (argc == 3)
+    else if (argc == 3 || argc == 4)
     {
         return;
     }
-    else if (argc > 3)
+    else if (argc > 4)
     {
         printf("Error: too many arguments.\n");
         printHelp();
@@ -62,6 +64,20 @@ void printHelp()
 {
     printf("Usage: rns.exe [-h help] [-n file input]\n");
     printf("Example: rns.exe -n basic.ntwk\n");
+}
+
+void printBuffer(char buffer[])
+{
+    int i;
+    size_t len = strlen(buffer);
+    for(i = 0; i < len; ++i)
+    {
+        printf("%s", buffer[i]);
+    }
+}
+void printLog(Log *csvList)
+{
+    printf("%u\n%s\n%u\n%u\n%u", csvList[i]->start_time, csvList[i]->msg, csvList[i]->current_node, csvList[i]->end_node);
 }
 
 #endif

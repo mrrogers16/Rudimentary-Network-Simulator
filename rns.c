@@ -9,19 +9,22 @@ int main(int argc, char *argv[])
 {
 
     FILE *fp = NULL;
+    FILE *csv = NULL;
     char buffer[BUFF_SIZE];
     Node nodeList[20];
+    Log csvList[100];
     fp = fopen(argv[2], "r");
+    csv = fopen(argv[4], "r");
     int opt;
 
     parseCMDLine(argc, argv);
 
-    while ((opt = getopt(argc, argv, ":hn:")) != -1)
+    while ((opt = getopt(argc, argv, ":hsn:")) != -1)
     {
         switch (opt)
         {
         case 'n':
-            if ((fp == NULL))
+            if (fp == NULL)
             {
                 perror("Error opening file");
                 exit(1);
@@ -29,24 +32,37 @@ int main(int argc, char *argv[])
             else
             {
                 buildNode(nodeList, buffer, fp);
+                // printBuffer(buffer);
+            }
+            break;
+        case 's':
+            if (fp == NULL)
+            {
+                perror("Error opening file");
+                exit(1);
+            }
+            else
+            {
+                build_csv(csvList, buffer, csv);
+                printLog(csvList);
             }
             break;
         case 'h':
             printHelp();
             return 0;
-            
+
         case '?':
             fprintf(stderr, "Unrecognized option -%c\n", optopt);
             return 0;
-            
+
         default:
             printHelp();
             return 0;
-            
         }
     }
 
     free(nodeList->conList);
+    fclose(csv);
     fclose(fp);
     return 0;
 }

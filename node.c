@@ -51,19 +51,85 @@ void buildNode(Node *nodeList, char buffer[], FILE *fp)
         sscanf(buffer, "%s", value);
         if (strcmp(value, "endNode") == 0)
         {
-            //printf("Found endnode\n");
+            // printf("Found endnode\n");
             printf("---------------\n");
             continue;
         }
 
         if (strcmp(value, "endNet") == 0)
         {
-            //printf("Found endNet\n");
+            // printf("Found endNet\n");
             exit(0);
         }
     }
 }
-// //TODO void destroyNode()
-// {
-// free()conlistmemory
-// }
+
+void build_csv(Log *csvList, char buffer[], FILE *csvp)
+{
+    char value[50];
+    int i = 0;
+    unsigned int ts = 0;
+    int read = 0;
+    int records = 0;
+
+    while (!feof(csvp))
+    {
+        fgets(buffer, BUFF_SIZE, csvp);
+        checkString(buffer, BUFF_SIZE);
+        stripComment(buffer);
+        int columns = check_columns(buffer);
+        size_t len = strlen(buffer);
+        for (i = 0; i < len; i++)
+        {
+            if(columns == NULL)
+            {
+                printf("Buffer is empty or Columns function failed");
+            }
+            if (columns == 4)
+            {
+                read = fscanf(buffer, "%u,%s,%u,%u,%u", &csvList[i].start_time, &csvList[i].msg, &csvList[i].current_node, &csvList[i].end_node);
+                records++;
+            }
+            else if(columns == 2)
+            {
+                fscanf(buffer, "%u,%s,%u", &csvList[i].start_time, &csvList[i].msg, &csvList[i].current_node);
+                records++;
+            }
+            else if (columns == 1 && strchr(buffer, 'rep'))
+            {
+                fscanf(buffer, "%u,%s", csvList[i].start_time, csvList[i].msg);
+                records++;
+            }
+            else if (columns == 1 && strchr(buffer, 'endSim'))
+            {
+                fscanf(buffer, "%u,%s", csvList[i].start_time, csvList[i].msg);
+                exit(0);
+            }
+        }
+    }
+
+    sscanf(buffer, "%u,%s", &ts, &value);
+    if (strcmp(value, "endSim") == 0)
+    {
+        exit(0);
+    }
+}
+
+int check_columns(char buffer[])
+{
+    size_t len = strlen(buffer);
+    int i;
+    int columns = 0;
+    for (i = 0; i < len; i++)
+    {
+        if (buffer[i] == ',')
+        {
+            columns += 1;
+        }
+        else
+        {
+            continue;
+        }
+    }
+    return columns;
+}
