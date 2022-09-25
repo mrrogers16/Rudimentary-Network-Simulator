@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <getopt.h>
+#include <unistd.h>
 #include "node.h"
 #define BUFF_SIZE 1024
 
@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 
     parseCMDLine(argc, argv);
 
-    while ((opt = getopt(argc, argv, ":hsn:")) != -1)
+    while ((opt = getopt(argc, argv, ":hs:n:")) != -1)
     {
         switch (opt)
         {

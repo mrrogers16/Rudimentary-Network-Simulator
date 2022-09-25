@@ -11,13 +11,14 @@ typedef struct Node
     int *conList;
 } Node;
 
-typedef struct csvLog
+typedef struct simLog
 {
     unsigned int start_time;
     char *msg;
     unsigned int msg_id;
     unsigned int start_node;
     unsigned int end_node;
+    int *simList;
 } Log;
 
 typedef struct csvRep
