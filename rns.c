@@ -12,14 +12,14 @@ int main(int argc, char *argv[])
     FILE *sim = NULL;
     char buffer[BUFF_SIZE];
     Node nodeList[20];
-    Log csvList[100];
+    Log simList[100];
     fp = fopen(argv[2], "r");
-    sim = fopen(argv[5], "r");
+    //sim = fopen(argv[5], "r");
     int opt;
 
-    parseCMDLine(argc, argv);
+    parseCMDLine(argc, argv);;
 
-    while ((opt = getopt(argc, argv, ":h:n:s:")) != -1)
+    while ((opt = getopt(argc, argv, ":shn")) != -1)
     {
         switch (opt)
         {
@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
             }
             else
             {
-                build_sim(csvList, buffer, sim);
+                ;//build_sim(simList, buffer, sim);
             }
             break;
         case 'h':
@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
     }
 
     free(nodeList->conList);
-    fclose(sim);
+    //fclose(sim);
     fclose(fp);
     return 0;
 }

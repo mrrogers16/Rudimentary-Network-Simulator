@@ -65,15 +65,15 @@ void printHelp()
     printf("Example: rns.exe -n basic.ntwk\n");
 }
 
-void printBuffer(char buffer[])
-{
-    int i;
-    size_t len = strlen(buffer);
-    for(i = 0; i < len; ++i)
-    {
-        printf("%s", buffer[i]);
-    }
-}
+// void printBuffer(char buffer[])
+// {
+//     int i;
+//     size_t len = strlen(buffer);
+//     for(i = 0; i < len; ++i)
+//     {
+//         printf("%s", buffer[i]);
+//     }
+// }
 void printLog(char *csvList)
 {
    // printf("%u\n%s\n%u\n%u\n%u", csvList[i]->start_time, csvList[i]->msg, csvList[i]->current_node, csvList[i]->end_node);

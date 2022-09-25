@@ -65,32 +65,6 @@ void buildNode(Node *nodeList, char buffer[], FILE *fp)
     }
 }
 
-void build_sim(Log *simList, char buffer[], FILE *sim)
-{
-    char value[50];
-    int i = 0;
-    while (!feof(sim))
-    {
-        int row_count = 0;
-        int field_count = 0;
-        // Read in file line by line
-        fgets(buffer, BUFF_SIZE, sim);
-        printf("%s", buffer);
-        // Handle oversized buffer
-        checkString(buffer, BUFF_SIZE);
-        // Remove comments
-        stripComment(buffer);
-
-        char *s = strchr(buffer, ',');
-        if (s != NULL)
-        {
-            // Scan the buffer to look for comma and if found assign NodeID and connection count to memory address of nodeList[i]
-            sscanf(buffer, "%d,%s,%d,%d,%d", &simList[i].start_time, &simList[i].msg, &simList[i].msg_id, &simList[i].start_node, &simList[i].end_node);
-            printf("Found timestamp: %u\nMessage: %d\nMessage ID: %u\nStart Node: %u\nEnd Node: %u", &simList[i].start_time, &simList[i].msg, &simList[i].msg_id, &simList[i].start_node, &simList[i].end_node);
-        }
-    }
-}
-
 int check_columns(char buffer[])
 {
     size_t len = strlen(buffer);
@@ -102,9 +76,9 @@ int check_columns(char buffer[])
         {
             columns += 1;
         }
-        else
+        else if(buffer[i] == NULL)
         {
-            continue;
+            break;
         }
     }
     return columns;
