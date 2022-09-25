@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
             }
             else
             {
-                build_csv(csvList, buffer, sim);
+                build_sim(csvList, buffer, sim);
             }
             break;
         case 'h':
