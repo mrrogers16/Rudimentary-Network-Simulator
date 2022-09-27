@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
     sim = fopen("simple.sim", "r");
     int opt;
 
-    parseCMDLine(argc, *argv);;
+    parseCMDLine(argc, argv);;
 
     while ((opt = getopt(argc, argv, "s:n:h")) != -1)
     {
