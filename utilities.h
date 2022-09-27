@@ -75,7 +75,7 @@ int check_columns(char buffer[])
         {
             columns += 1;
         }
-        else if (*buffer[i] == NULL)
+        else if (buffer[i] == NULL)
         {
             break;
         }
