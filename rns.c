@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
             else
             {
                 buildNode(nodeList, buffer, fp);
-                
+                return 0;
             }
             break;
         case 's':
@@ -45,8 +45,7 @@ int main(int argc, char *argv[])
             else
             {
                 build_sim(simList, buffer, sim);
-                exit(0);
-                
+                return 0;
             }
             break;
         case 'h':

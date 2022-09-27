@@ -60,8 +60,8 @@ void parseCMDLine(int argc, char argv[])
 
 void printHelp()
 {
-    printf("Usage: rns.exe [-h help] [-n file input]\n");
-    printf("Example: rns.exe -n basic.ntwk\n");
+    printf("Usage: rns.exe [-h help] [-n file input] [-s .sim file]\n");
+    printf("Example: rns.exe -n basic.ntwk -s simple.sim\n");
 }
 
 int check_columns(char buffer[])
