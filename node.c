@@ -81,14 +81,14 @@ void build_sim(Log *simList, char buffer[], FILE *sim)
             {
                 printf("Buffer is empty or Columns function failed");
             }
-            if (columns == 4)
+            else if (columns == 4)
             {
                 sscanf(buffer, "%u,%[^,],%u,%u,%u", &simList[i].start_time, simList[i].msg, &simList[i].msg_id, &simList[i].start_node, &simList[i].end_node);
                 printf("Start Time: %u\nMessage: %s\nMessage ID: %u\nStart Node: %u\nEnd Node: %u\n--------\n", simList[i].start_time, simList[i].msg, simList[i].msg_id, simList[i].start_node, simList[i].end_node);
                 i++;
                 break;
             }
-            if (columns == 2)
+            else if (columns == 2)
             {
                 sscanf(buffer, "%u,%s,%u", &simList[i].start_time, simList[i].msg, &simList[i].start_node);
                 printf("Timestamp: %u\nRep: %s\nNode ID:", &simList[i].start_time, &simList[i].msg, &simList[i].start_node);
@@ -109,7 +109,6 @@ void build_sim(Log *simList, char buffer[], FILE *sim)
                 i++;
                 exit(0);
             }
-            continue;
         }
     }
 }
