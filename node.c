@@ -98,14 +98,14 @@ void build_sim(Log *simList, char buffer[], FILE *sim)
             else if (columns == 1 && strcmp(buffer, "rep") == 0)
             {
                 sscanf(buffer, "%u,%s", &simList[i].start_time, simList[i].msg);
-                printf("Timestamp: %u\nMsg: %s********", &simList[i].start_time, simList[i].msg);
+                printf("Timestamp: %u\nRepMsg: %s********", &simList[i].start_time, simList[i].msg);
                 i++;
                 break;
             }
             else if (columns == 1 && strcmp(buffer, "endSim") == 0)
             {
                 sscanf(buffer, "%u,%s", &simList[i].start_time, simList[i].msg);
-                printf("Timestamp: %u\nMsg: %sxxxxxxxx", &simList[i].start_time, simList[i].msg);
+                printf("Timestamp: %u\nEndMsg: %sxxxxxxxx", &simList[i].start_time, simList[i].msg);
                 i++;
                 exit(0);
             }
