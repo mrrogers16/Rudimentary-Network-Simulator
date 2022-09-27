@@ -59,7 +59,7 @@ void buildNode(Node *nodeList, char buffer[], FILE *fp)
         if (strcmp(value, "endNet") == 0)
         {
             // printf("Found endNet\n");
-            break;// exit(0);
+            exit(0);
         }
     }
 }
