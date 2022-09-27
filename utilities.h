@@ -38,7 +38,7 @@ int checkString(char buffer[], int size)
     return buffLen;
 }
 // Ensure correct amount of command line arguments are passed
-void parseCMDLine(int argc, char argv[])
+void parseCMDLine(int argc, char *argv)
 {
     if (argc == 1)
     {
