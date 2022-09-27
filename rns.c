@@ -5,7 +5,7 @@
 #include "node.h"
 #define BUFF_SIZE 1024
 
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
 
     FILE *fp = NULL;
@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     fp = fopen(argv[2], "r");
     sim = fopen(argv[4], "r");
 
-    parseCMDLine(argc, argv);
+    parseCMDLine(argc, *argv);
 
     while ((opt = getopt(argc, argv, "s:n:h")) != -1)
     {
