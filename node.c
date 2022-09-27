@@ -110,6 +110,7 @@ void build_sim(Log *simList, char buffer[], FILE *sim)
                 exit(0);
             }
         }
+        continue;
     }
 }
 
