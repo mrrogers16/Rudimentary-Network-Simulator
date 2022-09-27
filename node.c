@@ -90,19 +90,19 @@ void build_sim(Log *simList, char buffer[], FILE *sim)
             }
             else if (columns == 2)
             {
-                sscanf(buffer, "%u,%s,%u", &simList[i].start_time, &simList[i].msg, &simList[i].start_node);
+                sscanf(buffer, "%u,%s,%u", &simList[i].start_time, simList[i].msg, &simList[i].start_node);
                 i++;
                 break;
             }
             else if (columns == 1 && strcmp(buffer, "rep") == 0)
             {
-                sscanf(buffer, "%u,%s", &simList[i].start_time, &simList[i].msg);
+                sscanf(buffer, "%u,%s", &simList[i].start_time, simList[i].msg);
                 i++;
                 break;
             }
             else if (columns == 1 && strcmp(buffer, "endSim") == 0)
             {
-                sscanf(buffer, "%u,%s", &simList[i].start_time, &simList[i].msg);
+                sscanf(buffer, "%u,%s", &simList[i].start_time, simList[i].msg);
                 i++;
                 exit(0);
             }
