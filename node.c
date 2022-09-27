@@ -83,3 +83,4 @@ int check_columns(char buffer[])
     }
     return columns;
 }
+

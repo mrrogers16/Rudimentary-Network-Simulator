@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
             }
             break;
         case 's':
-            if (fp == NULL)
+            if (sim == NULL)
             {
                 perror("Error opening file");
                 exit(1);
