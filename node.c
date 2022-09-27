@@ -2,7 +2,6 @@
 #include "node.h"
 #define COMMENT_MARKER '#'
 #define BUFF_SIZE 1024
-#define DELIMITER ','
 
 void buildNode(Node *nodeList, char buffer[], FILE *fp)
 {
@@ -110,22 +109,5 @@ void build_sim(Log *simList, char buffer[], FILE *sim)
         }
     }
 }
-int check_columns(char buffer[])
-{
-    size_t len = strlen(buffer);
-    int i;
-    int columns = 0;
-    for (i = 0; i < len; i++)
-    {
-        if (buffer[i] == ',')
-        {
-            columns += 1;
-        }
-        else if(buffer[i] == NULL)
-        {
-            break;
-        }
-    }
-    return columns;
-}
+
 

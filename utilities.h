@@ -7,8 +7,7 @@
 void stripComment(char buffer[]);
 int checkString(char buffer[], int size);
 void parseCMDLine(int argc, char argv[]);
-void printBuffer(char buffer[]);
-void printLog(char *csvList);
+int check_columns(char buffer[]);
 void printHelp();
 
 // Remove comments denoted by '#'
@@ -63,6 +62,25 @@ void printHelp()
 {
     printf("Usage: rns.exe [-h help] [-n file input]\n");
     printf("Example: rns.exe -n basic.ntwk\n");
+}
+
+int check_columns(char buffer[])
+{
+    size_t len = strlen(buffer);
+    int i;
+    int columns = 0;
+    for (i = 0; i < len; i++)
+    {
+        if (buffer[i] == ',')
+        {
+            columns += 1;
+        }
+        else if (buffer[i] == NULL)
+        {
+            break;
+        }
+    }
+    return columns;
 }
 
 #endif
