@@ -73,10 +73,10 @@ void build_sim(Log *simList, char buffer[], FILE *sim)
         checkString(buffer, BUFF_SIZE);
         stripComment(buffer);
         size_t len = strlen(buffer);
-
+        int columns = check_columns(buffer);
         for (i = 0; i < len; i++)
         {
-            int columns = check_columns(buffer);
+            
             if (columns == 0)
             {
                 printf("Buffer is empty or Columns function failed");
@@ -88,14 +88,14 @@ void build_sim(Log *simList, char buffer[], FILE *sim)
                 i++;
                 break;
             }
-            if (columns == 2)
+            else if (columns == 2)
             {
                 sscanf(buffer, "%u,%[^,],%u", &simList[i].start_time, simList[i].msg, &simList[i].start_node);
                 printf("Timestamp: %u\nRep: %s\nNode ID:", &simList[i].start_time, &simList[i].msg, &simList[i].start_node);
                 i++;
                 break;
             }
-            if (columns == 1 && strcmp(buffer, "rep") == 0)
+            else if (columns == 1 && strcmp(buffer, "rep") == 0)
             {
                 sscanf(buffer, "%u,%[^,],%s", &simList[i].start_time, simList[i].msg);
                 printf("Timestamp: %u\nRepMsg: %s********", &simList[i].start_time, simList[i].msg);
