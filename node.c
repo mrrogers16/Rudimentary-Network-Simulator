@@ -91,7 +91,7 @@ void build_sim(Log *simList, char buffer[], FILE *sim)
             else if (columns == 2)
             {
                 sscanf(buffer, "%u,%[^,],%u", &simList[i].start_time, simList[i].msg, &simList[i].start_node);
-                printf("Timestamp: %u\nRep: %s\nNode ID: %u\n", &simList[i].start_time, simList[i].msg, &simList[i].start_node);
+                printf("Timestamp: %u\nRep: %s\nNode ID: %u\n///////\n", &simList[i].start_time, simList[i].msg, &simList[i].start_node);
                 i++;
                 break;
             }
