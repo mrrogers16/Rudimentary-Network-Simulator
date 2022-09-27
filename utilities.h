@@ -83,4 +83,14 @@ int check_columns(char buffer[])
     return columns;
 }
 
+// printSim(Log *simList, char buffer[])
+// {
+//     size_t len = strlen(buffer);
+//     int i = 0;
+//     for(i; i < len; i++)
+//     {
+//         printf("Start Time: %u", simList[i].start_time);
+//     }
+// }
+
 #endif

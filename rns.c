@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <getopt.h>
 #include "node.h"
 #define BUFF_SIZE 1024
@@ -15,7 +14,7 @@ int main(int argc, char *argv[])
     Node nodeList[20];
     Log simList[100];
     fp = fopen(argv[2], "r");
-    sim = fopen(argv[5], "r");
+    sim = fopen("simple.sim", "r");
     int opt;
 
     parseCMDLine(argc, argv);;
