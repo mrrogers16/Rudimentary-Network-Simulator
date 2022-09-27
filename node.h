@@ -14,21 +14,15 @@ typedef struct Node
 typedef struct simLog
 {
     unsigned int start_time;
-    char *msg;
+    char *msg[512];
     unsigned int msg_id;
     unsigned int start_node;
     unsigned int end_node;
     int *simList;
 } Log;
 
-typedef struct csvRep
-{
-    unsigned int start_time;
-    char *rep;
-    unsigned int node_ID;
-} Rep;
 
-//void build_sim(Log *csvList, char buffer[], FILE *csvp);
 void buildNode(Node *nodeList, char buffer[], FILE *fp);
+void build_sim(Log *simList, char buffer[], FILE *sim);
 
 #endif

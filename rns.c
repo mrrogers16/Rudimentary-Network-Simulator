@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     Node nodeList[20];
     Log simList[100];
     fp = fopen(argv[2], "r");
-    //sim = fopen(argv[5], "r");
+    sim = fopen(argv[5], "r");
     int opt;
 
     parseCMDLine(argc, argv);;
@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
             }
             else
             {
-                ;//build_sim(simList, buffer, sim);
+                build_sim(simList, buffer, sim);
             }
             break;
         case 'h':
@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
     }
 
     free(nodeList->conList);
-    //fclose(sim);
+    fclose(sim);
     fclose(fp);
     return 0;
 }

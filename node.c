@@ -65,6 +65,51 @@ void buildNode(Node *nodeList, char buffer[], FILE *fp)
     }
 }
 
+void build_sim(Log *simList, char buffer[], FILE *sim)
+{
+    while (!feof(sim))
+    {
+        int i = 0;
+        fgets(buffer, BUFF_SIZE, sim);
+        checkString(buffer, BUFF_SIZE);
+        stripComment(buffer);
+        size_t len = strlen(buffer);
+
+        for (i = 0; i < len; i++)
+        {
+            int columns = check_columns(buffer);
+            if (columns == 0)
+            {
+                printf("Buffer is empty or Columns function failed");
+            }
+            if (columns == 4)
+            {
+                sscanf(buffer, "%u,%[^,],%u,%u,%u", &simList[i].start_time, simList[i].msg, &simList[i].msg_id, &simList[i].start_node, &simList[i].end_node);
+                printf("Start Time: %u\nMessage: %s\nMessage ID: %u\nStart Node: %u\nEnd Node: %u\n", simList[i].start_time, simList[i].msg, simList[i].msg_id, simList[i].start_node, simList[i].end_node);
+                i++;
+                break;
+            }
+            else if (columns == 2)
+            {
+                sscanf(buffer, "%u,%s,%u", &simList[i].start_time, &simList[i].msg, &simList[i].start_node);
+                i++;
+                break;
+            }
+            else if (columns == 1 && strcmp(buffer, "rep") == 0)
+            {
+                sscanf(buffer, "%u,%s", &simList[i].start_time, &simList[i].msg);
+                i++;
+                break;
+            }
+            else if (columns == 1 && strcmp(buffer, "endSim") == 0)
+            {
+                sscanf(buffer, "%u,%s", &simList[i].start_time, &simList[i].msg);
+                i++;
+                exit(0);
+            }
+        }
+    }
+}
 int check_columns(char buffer[])
 {
     size_t len = strlen(buffer);
