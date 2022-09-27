@@ -11,7 +11,6 @@ void build_csv(Log *csvList, char buffer[], FILE *csvp)
         fgets(buffer, BUFF_SIZE, csvp);
         checkString(buffer, BUFF_SIZE);
         stripComment(buffer);
-        int columns = check_columns(buffer);
         size_t len = strlen(buffer);
         for (i = 0; i < len; i++)
         {

@@ -64,7 +64,7 @@ void buildNode(Node *nodeList, char buffer[], FILE *fp)
         }
     }
 }
-void build_sim(Log *simList, char buffer[], FILE *sim)
+Log build_sim(Log *simList, char buffer[], FILE *sim)
 {
     char value[50];
     int i = 0;
@@ -76,14 +76,12 @@ void build_sim(Log *simList, char buffer[], FILE *sim)
         checkString(buffer, BUFF_SIZE);
         // Remove comments
         stripComment(buffer);
-g
-        char *s = strchr(buffer, ',');
-        if (s != NULL)
-        {
+
             // Scan the buffer to look for comma and if found assign NodeID and connection count to memory address of nodeList[i]
             sscanf(buffer, "%u,%s,%u,%u,%u", &simList[i].start_time, &simList[i].msg, &simList[i].msg_id, &simList[i].start_node, &simList[i].end_node);
             printf("Found timestamp: %u\nMessage: %d\nMessage ID: %u\nStart Node: %u\nEnd Node: %u", &simList[i].start_time, &simList[i].msg, &simList[i].msg_id, &simList[i].start_node, &simList[i].end_node);
-        }
+        
+        
     }
 }
 

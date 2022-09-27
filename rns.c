@@ -12,8 +12,8 @@ int main(int argc, char *argv[])
     FILE *sim = NULL;
     char buffer[BUFF_SIZE];
     Node nodeList[20];
-    Log csvList[100];
-    //fp = fopen(argv[2], "r");
+    Log simList[100];
+    fp = fopen(argv[2], "r");
     sim = fopen(argv[5], "r");
     int opt;
 
@@ -36,14 +36,14 @@ int main(int argc, char *argv[])
             }
             break;
         case 's':
-            if (fp == NULL)
+            if (sim == NULL)
             {
                 perror("Error opening file");
                 exit(1);
             }
             else
             {
-                build_sim(csvList, buffer, sim);
+                build_sim(simList, buffer, sim);
             }
             break;
         case 'h':
@@ -62,6 +62,6 @@ int main(int argc, char *argv[])
 
     free(nodeList->conList);
     fclose(sim);
-   // fclose(fp);
+    fclose(fp);
     return 0;
 }

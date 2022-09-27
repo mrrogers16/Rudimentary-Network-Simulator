@@ -28,7 +28,7 @@ typedef struct csvRep
     unsigned int node_ID;
 } Rep;
 
-void build_sim(Log *csvList, char buffer[], FILE *csvp);
+Log build_sim(Log *csvList, char buffer[], FILE *csvp);
 void buildNode(Node *nodeList, char buffer[], FILE *fp);
 
 #endif
