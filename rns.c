@@ -45,7 +45,7 @@ int main(int argc, char **argv)
             else
             {
                 build_sim(simList, buffer, sim);
-                continue;
+                
             }
             break;
         case 'h':
