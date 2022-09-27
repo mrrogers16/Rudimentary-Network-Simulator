@@ -84,7 +84,7 @@ void build_sim(Log *simList, char buffer[], FILE *sim)
             if (columns == 4)
             {
                 sscanf(buffer, "%u,%[^,],%u,%u,%u", &simList[i].start_time, simList[i].msg, &simList[i].msg_id, &simList[i].start_node, &simList[i].end_node);
-                printf("Start Time: %u\nMessage: %s\nMessage ID: %u\nStart Node: %u\nEnd Node: %u\n", simList[i].start_time, simList[i].msg, simList[i].msg_id, simList[i].start_node, simList[i].end_node);
+                printf("Start Time: %u\nMessage: %s\nMessage ID: %u\nStart Node: %u\nEnd Node: %u\n--------", simList[i].start_time, simList[i].msg, simList[i].msg_id, simList[i].start_node, simList[i].end_node);
                 i++;
                 break;
             }
@@ -98,14 +98,14 @@ void build_sim(Log *simList, char buffer[], FILE *sim)
             else if (columns == 1 && strcmp(buffer, "rep") == 0)
             {
                 sscanf(buffer, "%u,%s", &simList[i].start_time, simList[i].msg);
-                printf("Timestamp: %u\nMsg: %s", &simList[i].start_time, simList[i].msg);
+                printf("Timestamp: %u\nMsg: %s********", &simList[i].start_time, simList[i].msg);
                 i++;
                 break;
             }
             else if (columns == 1 && strcmp(buffer, "endSim") == 0)
             {
                 sscanf(buffer, "%u,%s", &simList[i].start_time, simList[i].msg);
-                printf("Timestamp: %u\nMsg: %s", &simList[i].start_time, simList[i].msg);
+                printf("Timestamp: %u\nMsg: %sxxxxxxxx", &simList[i].start_time, simList[i].msg);
                 i++;
                 exit(0);
             }
