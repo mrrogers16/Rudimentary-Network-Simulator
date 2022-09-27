@@ -24,5 +24,10 @@ typedef struct simLog
 
 void buildNode(Node *nodeList, char buffer[], FILE *fp);
 void build_sim(Log *simList, char buffer[], FILE *sim);
+void stripComment(char buffer[]);
+int checkString(char buffer[], int size);
+void parseCMDLine(int argc, char argv[]);
+int check_columns(char buffer[]);
+void printHelp();
 
 #endif
