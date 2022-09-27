@@ -13,9 +13,10 @@ int main(int argc, char *argv[])
     char buffer[BUFF_SIZE];
     Node nodeList[20];
     Log simList[100];
+    int opt;
+
     fp = fopen(argv[2], "r");
     sim = fopen(argv[4], "r");
-    int opt;
 
     parseCMDLine(argc, argv);
 
@@ -50,11 +51,9 @@ int main(int argc, char *argv[])
         case 'h':
             printHelp();
             return 0;
-
         case '?':
             fprintf(stderr, "Unrecognized option -%c\n", optopt);
             return 0;
-
         default:
             printHelp();
             return 0;
