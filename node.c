@@ -108,6 +108,7 @@ void build_sim(Log *simList, char buffer[], FILE *sim)
                 printf("Timestamp: %u\nEndMsg: %s\n---------------\n", simList[i].start_time, simList[i].msg);
                 i++;
                 break;
+                exit(0);
             }
         }
     }
