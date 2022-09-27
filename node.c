@@ -84,28 +84,28 @@ void build_sim(Log *simList, char buffer[], FILE *sim)
             if (columns == 4)
             {
                 sscanf(buffer, "%u,%[^,],%u,%u,%u", &simList[i].start_time, simList[i].msg, &simList[i].msg_id, &simList[i].start_node, &simList[i].end_node);
-                printf("Timestamp: %u\nMessage: %s\nMessage ID: %u\nStart Node: %u\nEnd Node: %u\n--------\n", simList[i].start_time, simList[i].msg, simList[i].msg_id, simList[i].start_node, simList[i].end_node);
+                printf("Timestamp: %u\nMessage: %s\nMessage ID: %u\nStart Node: %u\nEnd Node: %u\n---------------\n", simList[i].start_time, simList[i].msg, simList[i].msg_id, simList[i].start_node, simList[i].end_node);
                 i++;
                 break;
             }
             else if (columns == 2 && strstr(buffer, "rep"))
             {
                 sscanf(buffer, "%u,%[^,],%u", &simList[i].start_time, simList[i].msg, &simList[i].start_node);
-                printf("Timestamp: %u\nRepMsg: %s\nNode ID: %u\n///////\n", simList[i].start_time, simList[i].msg, simList[i].start_node);
+                printf("Timestamp: %u\nRepMsg: %s\nNode ID: %u\n---------------\n", simList[i].start_time, simList[i].msg, simList[i].start_node);
                 i++;
                 break;
             }
             else if (columns == 1 && strstr(buffer, "rep"))
             {
                 sscanf(buffer, "%u,%[^,],%s", &simList[i].start_time, simList[i].msg);
-                printf("Timestamp: %u\nRepMsg: %s********\n", simList[i].start_time, simList[i].msg);
+                printf("Timestamp: %u\nRepMsg: %s\n---------------\n", simList[i].start_time, simList[i].msg);
                 i++;
                 break;
             }
             else if(columns == 1 && strstr(buffer, "endSim"))
             {
                 sscanf(buffer, "%u,%s", &simList[i].start_time, simList[i].msg);
-                printf("Timestamp: %u\nEndMsg: %s\nxxxxxxxx\n", simList[i].start_time, simList[i].msg);
+                printf("Timestamp: %u\nEndMsg: %s\n---------------\n", simList[i].start_time, simList[i].msg);
                 i++;
                 exit(0);
             }
