@@ -107,7 +107,7 @@ void build_sim(Log *simList, char buffer[], FILE *sim)
                 sscanf(buffer, "%u,%s", &simList[i].start_time, simList[i].msg);
                 printf("Timestamp: %u\nEndMsg: %s\n---------------\n", simList[i].start_time, simList[i].msg);
                 i++;
-                exit(0);
+                return;
             }
         }
     }
