@@ -32,7 +32,6 @@ int main(int argc, char *argv[])
             else
             {
                 buildNode(nodeList, buffer, fp);
-                // printBuffer(buffer);
             }
             break;
         case 's':
