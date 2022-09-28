@@ -46,7 +46,6 @@ int main(int argc, char **argv)
             {
                 build_sim(simList, buffer, sim);
                 fclose(sim);
-                
             }
             break;
         case 'h':
@@ -61,7 +60,7 @@ int main(int argc, char **argv)
         }
     }
 
-    free(nodeList->conList);
+    //free(nodeList->conList);
     // fclose(sim);
     // fclose(fp);
     return 0;
