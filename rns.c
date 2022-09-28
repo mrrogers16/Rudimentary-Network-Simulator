@@ -34,6 +34,7 @@ int main(int argc, char **argv)
             {
                 buildNode(nodeList, buffer, fp);
                 fclose(fp);
+                free(nodeList->conList);
             }
             break;
         case 's':
