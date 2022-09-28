@@ -2,7 +2,6 @@
 #include "node.h"
 #define COMMENT_MARKER '#'
 #define BUFF_SIZE 1024
-#define DELIMITER ','
 
 void buildNode(Node *nodeList, char buffer[], FILE *fp)
 {
@@ -60,47 +59,58 @@ void buildNode(Node *nodeList, char buffer[], FILE *fp)
         if (strcmp(value, "endNet") == 0)
         {
             // printf("Found endNet\n");
-            exit(0);
+            break;
         }
     }
 }
-Log build_sim(Log *simList, char buffer[], FILE *sim)
+
+void build_sim(Log *simList, char buffer[], FILE *sim)
 {
-    char value[50];
-    int i = 0;
     while (!feof(sim))
     {
-        // Read in file line by line
+        int i = 0;
         fgets(buffer, BUFF_SIZE, sim);
-        // Handle oversized buffer
         checkString(buffer, BUFF_SIZE);
-        // Remove comments
         stripComment(buffer);
-
-            // Scan the buffer to look for comma and if found assign NodeID and connection count to memory address of nodeList[i]
-            sscanf(buffer, "%u,%s,%u,%u,%u", &simList[i].start_time, &simList[i].msg, &simList[i].msg_id, &simList[i].start_node, &simList[i].end_node);
-            printf("Found timestamp: %u\nMessage: %d\nMessage ID: %u\nStart Node: %u\nEnd Node: %u", &simList[i].start_time, &simList[i].msg, &simList[i].msg_id, &simList[i].start_node, &simList[i].end_node);
-        
-        
+        size_t len = strlen(buffer);
+        int columns = check_columns(buffer);
+        for (i = 0; i < len; i++)
+        {
+            
+            if (columns == 0)
+            {
+                printf("Buffer is empty or Columns function failed");
+            }
+            if (columns == 4)
+            {
+                sscanf(buffer, "%u,%[^,],%u,%u,%u", &simList[i].start_time, simList[i].msg, &simList[i].msg_id, &simList[i].start_node, &simList[i].end_node);
+                printf("Timestamp: %u\nMessage: %s\nMessage ID: %u\nStart Node: %u\nEnd Node: %u\n---------------\n", simList[i].start_time, simList[i].msg, simList[i].msg_id, simList[i].start_node, simList[i].end_node);
+                i++;
+                break;
+            }
+            else if (columns == 2 && strstr(buffer, "rep"))
+            {
+                sscanf(buffer, "%u,%[^,],%u", &simList[i].start_time, simList[i].msg, &simList[i].start_node);
+                printf("Timestamp: %u\nRepMsg: %s\nNode ID: %u\n---------------\n", simList[i].start_time, simList[i].msg, simList[i].start_node);
+                i++;
+                break;
+            }
+            else if (columns == 1 && strstr(buffer, "rep"))
+            {
+                sscanf(buffer, "%u,%[^,],%s", &simList[i].start_time, simList[i].msg);
+                printf("Timestamp: %u\nRepMsg: %s\n---------------\n", simList[i].start_time, simList[i].msg);
+                i++;
+                break;
+            }
+            else if(columns == 1 && strstr(buffer, "endSim"))
+            {
+                sscanf(buffer, "%u,%s", &simList[i].start_time, simList[i].msg);
+                printf("Timestamp: %u\nEndMsg: %s\n****************\n", simList[i].start_time, simList[i].msg);
+                i++;
+                break;
+            }
+        }
     }
 }
 
-int check_columns(char buffer[])
-{
-    size_t len = strlen(buffer);
-    int i;
-    int columns = 0;
-    for (i = 0; i < len; i++)
-    {
-        if (buffer[i] == ',')
-        {
-            columns += 1;
-        }
-        else
-        {
-            continue;
-        }
-    }
-    return columns;
-}
 

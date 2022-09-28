@@ -8,5 +8,7 @@
 17,msg,4,2,8
 18,msg,5,3,7
 18,msg,6,5,0
-50,rep
-51,endSim
+254,msg,7,8,9
+50,rep, 1
+51,rep
+52,endSim

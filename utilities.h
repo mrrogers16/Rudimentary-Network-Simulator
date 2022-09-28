@@ -7,8 +7,7 @@
 void stripComment(char buffer[]);
 int checkString(char buffer[], int size);
 void parseCMDLine(int argc, char argv[]);
-void printBuffer(char buffer[]);
-void printLog(char *csvList);
+int check_columns(char buffer[]);
 void printHelp();
 
 // Remove comments denoted by '#'
@@ -39,7 +38,7 @@ int checkString(char buffer[], int size)
     return buffLen;
 }
 // Ensure correct amount of command line arguments are passed
-void parseCMDLine(int argc, char argv[])
+void parseCMDLine(int argc, char *argv)
 {
     if (argc == 1)
     {
@@ -61,22 +60,28 @@ void parseCMDLine(int argc, char argv[])
 
 void printHelp()
 {
-    printf("Usage: rns.exe [-h help] [-n file input]\n");
-    printf("Example: rns.exe -n basic.ntwk\n");
+    printf("Usage: rns.exe [-h help] [-n file input] [-s .sim file]\n");
+    printf("Example: rns.exe -n basic.ntwk -s simple.sim\n");
 }
 
-void printBuffer(char buffer[])
+int check_columns(char buffer[])
 {
-    int i;
     size_t len = strlen(buffer);
-    for(i = 0; i < len; ++i)
+    int i;
+    int columns = 0;
+    for (i = 0; i < len; i++)
     {
-        printf("%s", buffer[i]);
+        if (buffer[i] == ',')
+        {
+            columns += 1;
+        }
+        else if (buffer[i] == NULL)
+        {
+            break;
+        }
     }
+    return columns;
 }
-void printLog(char *csvList)
-{
-   // printf("%u\n%s\n%u\n%u\n%u", csvList[i]->start_time, csvList[i]->msg, csvList[i]->current_node, csvList[i]->end_node);
-}
+
 
 #endif
