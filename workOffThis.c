@@ -27,8 +27,6 @@ int main()
     Log simList[100];
     sim = fopen("simple.sim", "r");
     build_sim(simList, buffer, sim);
-    //printf("%u\n", simList[0].start_time);
-    //printf("%s\n", simList[0].msg);
     fclose(sim);
 }
 
