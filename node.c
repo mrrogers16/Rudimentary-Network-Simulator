@@ -2,11 +2,12 @@
 #include "node.h"
 #define COMMENT_MARKER '#'
 #define BUFF_SIZE 1024
+#define ARR_LENGTH 50
 
 void buildNode(Node *nodeList, char buffer[], FILE *fp)
 {
 
-    char value[50];
+    char value[ARR_LENGTH];
     int i = 0;
     while (!feof(fp))
     {
@@ -31,9 +32,9 @@ void buildNode(Node *nodeList, char buffer[], FILE *fp)
 
             // Look through buffer conCount amount of times and assign
             int x, j = 0;
-            for (x = 0; x < nodeList->conCount; x++)
+            for (x; x < nodeList->conCount; ++x)
             {
-                for (j; j < nodeList[i].conCount; j++)
+                for (j; j < nodeList[i].conCount; ++j)
                 {
 
                     fgets(buffer, BUFF_SIZE, fp);
@@ -44,7 +45,7 @@ void buildNode(Node *nodeList, char buffer[], FILE *fp)
                     }
                     sscanf(buffer, "%d", &nodeList->conList[j]);
                     printf("Connection %d: %d\n", x, nodeList->conList[j]);
-                    x++;
+                    ++x;
                 }
             }
         }

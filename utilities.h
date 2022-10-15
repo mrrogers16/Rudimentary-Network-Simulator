@@ -10,6 +10,7 @@ void parseCMDLine(int argc, char argv[]);
 int check_columns(char buffer[]);
 void printHelp();
 
+
 // Remove comments denoted by '#'
 void stripComment(char buffer[])
 {
