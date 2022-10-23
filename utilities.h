@@ -3,12 +3,53 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdbool.h>
+#include "node.h"
 
+bool checkNodeID(Log *simList);
+void printRep(Log *simList);
+void printAllRep(Log *simList, int sim_count);
 void stripComment(char buffer[]);
 int checkString(char buffer[], int size);
 void parseCMDLine(int argc, char argv[]);
 int check_columns(char buffer[]);
 void printHelp();
+
+bool checkNodeID(Log *simList)
+{
+    int i = 0;
+    size_t len = sizeof(simList);
+    for (i; i < len; ++i)
+    {
+        if (simList[i].start_node)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+void printRep(Log *simList)
+{
+    printf("----------\n");
+    printf("Start time: %u\n", simList->start_time);
+    printf("Message: %s\n", simList->msg);
+    printf("Message ID: %u\n", simList->msg_id);
+    printf("Start Node: %u\n", simList->start_node);
+    printf("End Node: %u\n", simList->end_node);
+    printf("----------\n");
+
+}
+
+void printAllRep(Log *simList, int sim_count)
+{
+    int i = 0;
+
+    for (i; i < sim_count; ++i)
+    {
+        printRep(&simList[i]);
+    }
+}
 
 // Remove comments denoted by '#'
 void stripComment(char buffer[])
@@ -82,6 +123,5 @@ int check_columns(char buffer[])
     }
     return columns;
 }
-
 
 #endif
