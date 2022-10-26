@@ -3,6 +3,7 @@
 #define COMMENT_MARKER '#'
 #define BUFF_SIZE 1024
 
+
 void buildNode(Node *nodeList, char buffer[], FILE *fp)
 {
 
