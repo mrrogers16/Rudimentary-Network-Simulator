@@ -10,7 +10,6 @@ typedef struct Node
     int conCount;
     int *conList;
 } Node;
-
 typedef struct simLog
 {
     unsigned int start_time;
@@ -27,6 +26,13 @@ typedef struct report
     unsigned int selected_node;
     int *repList;
 } Rep;
+typedef struct route
+{
+    unsigned int hop_count
+    unsigned int final_destination
+    unsigned int next_hop_node
+} Route;
+
 
 void buildNode(Node *nodeList, char buffer[], FILE *fp);
 void build_sim(Log *simList, Rep *repList, char buffer[], FILE *sim);
