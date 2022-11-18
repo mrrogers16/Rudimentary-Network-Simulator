@@ -6,9 +6,9 @@
 
 typedef struct Node
 {
-    int nodeID;
-    int conCount;
-    int *conList;
+    unsigned int nodeID;
+    unsigned int conCount;
+    unsigned int *conList;
 } Node;
 typedef struct simLog
 {

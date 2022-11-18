@@ -25,8 +25,8 @@ void buildNode(Node *nodeList, char buffer[], FILE *fp)
         if (s != NULL)
         {
             // Scan the buffer to look for comma and if found assign NodeID and connection count to memory address of nodeList[i]
-            sscanf(buffer, "%d, %d", &nodeList[i].nodeID, &nodeList[i].conCount);
-            printf("Found nodeId: %d\nConnection Count: %d\n", nodeList[i].nodeID, nodeList[i].conCount);
+            sscanf(buffer, "%u, %u", &nodeList[i].nodeID, &nodeList[i].conCount);
+            printf("Found nodeId: %u\nConnection Count: %u\n", nodeList[i].nodeID, nodeList[i].conCount);
             // dynamically allocate memory for conList
             nodeList->conList = (int *)malloc(sizeof(int) * nodeList[i].conCount);
 
@@ -43,8 +43,8 @@ void buildNode(Node *nodeList, char buffer[], FILE *fp)
                     j -= 1;
                     continue;
                 }
-                sscanf(buffer, "%d", &nodeList->conList[j]);
-                printf("Connection %d: %d\n", x, nodeList->conList[j]);
+                sscanf(buffer, "%u", &nodeList->conList[j]);
+                printf("Connection %u: %u\n", x, nodeList->conList[j]);
                 x++;
             }
         }
