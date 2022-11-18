@@ -32,6 +32,17 @@ typedef struct route
     unsigned int final_destination;
     unsigned int next_hop_node;
 } Route;
+typedef struct message
+{
+    unsigned int message_ID;
+    unsigned int start_time;
+    unsigned int start_node;
+    unsigned int end_node;
+    unsigned int current_node;
+    unsigned int end_time;
+    struct message *next;
+    struct message *prev; 
+} Message;
 
 
 void buildNode(Node *nodeList, char buffer[], FILE *fp);

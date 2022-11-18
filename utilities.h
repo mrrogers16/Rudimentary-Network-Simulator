@@ -14,6 +14,9 @@ int checkString(char buffer[], int size);
 void parseCMDLine(int argc, char argv[]);
 int check_columns(char buffer[]);
 void printHelp();
+void message_destroy(Message *msg);
+void print_message(Message *head);
+
 
 bool checkNodeID(Log *simList)
 {
@@ -38,7 +41,6 @@ void printRep(Log *simList)
     printf("Start Node: %u\n", simList->start_node);
     printf("End Node: %u\n", simList->end_node);
     printf("----------\n");
-
 }
 
 void printAllRep(Log *simList, int sim_count)
@@ -106,6 +108,7 @@ void printHelp()
 }
 
 int check_columns(char buffer[])
+
 {
     size_t len = strlen(buffer);
     int i;
@@ -122,6 +125,43 @@ int check_columns(char buffer[])
         }
     }
     return columns;
+}
+
+void print_message(Message *head)
+{
+    Message *temp = head;
+    while (temp != NULL)
+    {
+        printf("%d - ", temp->message_ID);
+        printf("%d - ", temp->start_time);
+        printf("%d - ", temp->start_node);
+        printf("%d - ", temp->end_node);
+        printf("%d - ", temp->current_node);
+        printf("%d - ", temp->end_time);
+        temp = temp->next;
+    }
+    printf("\n");
+}
+
+void message_destroy(Message *msg)
+{
+    Message *temp = msg;
+    while (temp != NULL)
+    {
+        free(temp->message_ID);
+        free(temp->start_time);
+        free(temp->start_node);
+        free(temp->end_node);
+        free(temp->current_node);
+        free(temp->end_time);
+        
+    }
+    if (temp == NULL)
+    {
+        return;
+    }
+
+    free(temp);
 }
 
 #endif
