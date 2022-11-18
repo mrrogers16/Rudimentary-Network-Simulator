@@ -28,9 +28,9 @@ typedef struct report
 } Rep;
 typedef struct route
 {
-    unsigned int hop_count
-    unsigned int final_destination
-    unsigned int next_hop_node
+    unsigned int hop_count;
+    unsigned int final_destination;
+    unsigned int next_hop_node;
 } Route;
 
 
