@@ -6,16 +6,10 @@
 
 typedef struct Node
 {
-<<<<<<< Updated upstream
-    unsigned int nodeID;
-    unsigned int conCount;
-    unsigned int *conList;
-=======
     int nodeID;
     int conCount;
     int *conList;
     struct Node *next;
->>>>>>> Stashed changes
 } Node;
 typedef struct simLog
 {
