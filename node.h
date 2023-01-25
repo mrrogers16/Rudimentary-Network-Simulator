@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#define MAX 512
 
 typedef struct Node
 {
@@ -14,7 +15,7 @@ typedef struct Node
 typedef struct simLog
 {
     unsigned int start_time;
-    char *msg[512];
+    char *msg[MAX];
     unsigned int msg_id;
     unsigned int start_node;
     unsigned int end_node;
@@ -23,7 +24,7 @@ typedef struct simLog
 typedef struct report
 {
     unsigned int start_time;
-    char *msg[512];
+    char *msg[MAX];
     unsigned int selected_node;
     int *repList;
 } Rep;
@@ -41,10 +42,10 @@ typedef struct message
     unsigned int end_node;
     unsigned int current_node;
     unsigned int end_time;
+    char *message_contents[MAX];
     struct message *next;
-    struct message *prev; 
+    struct message *prev;
 } Message;
-
 
 void buildNode(Node *nodeList, char buffer[], FILE *fp);
 void build_sim(Log *simList, Rep *repList, char buffer[], FILE *sim);
